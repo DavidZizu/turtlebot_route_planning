@@ -110,16 +110,18 @@ void Square::startMotion() {
 	while (ros::ok() && count < 8) {
 		ROS_INFO_STREAM("Moving forward");
 		moveForward();
+		sleep(2);
 		ROS_INFO_STREAM("Rotating in place");
 		rotate();
+		sleep(2);
 	}
 }
 
 void Square::rotate() {
-	vel_to_publish.angular.z = 0.5;
-	vel_to_publish.linear.x = 0;
+	//vel_to_publish.linear.x = 0;
+	//pub_vel.publish(vel_to_publish);
 
-	pub_vel.publish(vel_to_publish);
+	vel_to_publish.angular.z = 0.5;
 
 	while (ros::ok() && rotation)
 		ros::spinOnce();
@@ -128,8 +130,10 @@ void Square::rotate() {
 }
 
 void Square::moveForward() {
+	//vel_to_publish.angular.z = 0;
+	//pub_vel.publish(vel_to_publish);
+
 	vel_to_publish.linear.x = velocity;
-	vel_to_publish.angular.z = 0;
 	
 	while (ros::ok() && !rotation)
 		ros::spinOnce(); 

@@ -132,6 +132,8 @@ include_directories(
 add_executable(square_path src/square_path.cpp)
 add_executable(square_path_odom src/square_path_odom.cpp)
 add_executable(odom_position src/odom_position.cpp)
+add_executable(move_one_meter_forward src/move_one_meter_forward.cpp)
+add_executable(move_one_meter_forward_timer src/move_one_meter_forward_timer.cpp)
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -145,6 +147,12 @@ target_link_libraries(square_path_odom
    ${catkin_LIBRARIES}
 )
 target_link_libraries(odom_position
+   ${catkin_LIBRARIES}
+)
+target_link_libraries(move_one_meter_forward
+   ${catkin_LIBRARIES}
+)
+target_link_libraries(move_one_meter_forward_timer
    ${catkin_LIBRARIES}
 )
 
